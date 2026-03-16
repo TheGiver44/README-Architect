@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-cyber-black: #050505;
+  --color-cyber-gray: #1a1a1a;
+  --color-cyber-neon: #00ff41; /* Matrix Green */
+  --color-cyber-purple: #bc13fe;
+  --color-cyber-blue: #00f3ff;
+}
+
+@layer base {
+  body {
+    @apply bg-cyber-black text-gray-300 font-sans antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cyber-black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyber-neon/20 rounded-full hover:bg-cyber-neon/40 transition-colors;
+  }
+}
+
+.markdown-body {
+  @apply text-gray-300 leading-relaxed;
+}
+
+.markdown-body h1 {
+  @apply text-3xl font-bold mb-6 text-white border-b border-cyber-neon/20 pb-2;
+}
+
+.markdown-body h2 {
+  @apply text-2xl font-semibold mt-8 mb-4 text-cyber-blue border-b border-cyber-blue/10 pb-1;
+}
+
+.markdown-body h3 {
+  @apply text-xl font-medium mt-6 mb-3 text-cyber-purple;
+}
+
+.markdown-body p {
+  @apply mb-4;
+}
+
+.markdown-body a {
+  @apply text-cyber-neon hover:underline;
+}
+
+.markdown-body code {
+  @apply bg-cyber-gray px-1.5 py-0.5 rounded font-mono text-sm text-cyber-neon;
+}
+
+.markdown-body pre {
+  @apply bg-cyber-gray p-4 rounded-lg font-mono text-sm overflow-x-auto border border-cyber-neon/10 my-4;
+}
+
+.markdown-body ul, .markdown-body ol {
+  @apply mb-4 ml-6 list-disc;
+}
+
+.markdown-body blockquote {
+  @apply border-l-4 border-cyber-neon/30 pl-4 italic text-gray-400 my-4;
+}
+
+.markdown-body img {
+  @apply rounded-lg max-w-full h-auto;
+}
+
+.markdown-body hr {
+  @apply border-cyber-neon/10 my-8;
+}
+
+.markdown-body table {
+  @apply w-full border-collapse mb-4;
+}
+
+.markdown-body th, .markdown-body td {
+  @apply border border-cyber-neon/10 p-2 text-left;
+}
+
+.markdown-body th {
+  @apply bg-cyber-neon/5;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 255, 65, 0.1);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
